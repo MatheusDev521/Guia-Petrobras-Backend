@@ -79,39 +79,3 @@ def gerar_pdf():
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
-
-
-# =====================================================
-# ROTA DEBUG (RÉGUA / TESTE)
-# =====================================================
-
-@app.route("/gerar-pdf-debug", methods=["POST"])
-def gerar_pdf_debug():
-    try:
-        buffer = io.BytesIO()
-        c = canvas.Canvas(buffer, pagesize=A4)
-        largura, altura = A4
-
-        c.setFont("Helvetica", 8)
-
-        # Régua horizontal
-        for x in range(0, int(largura), 50):
-            c.drawString(x, altura - 20, str(x))
-
-        # Régua vertical
-        for y in range(0, int(altura), 50):
-            c.drawString(5, y, str(y))
-
-        c.showPage()
-        c.save()
-        buffer.seek(0)
-
-        return send_file(
-            buffer,
-            as_attachment=True,
-            download_name="Guia_Petrobras_DEBUG.pdf",
-            mimetype="application/pdf"
-        )
-
-    except Exception as e:
-        return jsonify({"erro": str(e)}), 500
