@@ -2,6 +2,7 @@ import os
 import io
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
+from PyPDF2 import PdfReader, PdfWriter
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 
@@ -35,38 +36,44 @@ def gerar_pdf():
         if not dados:
             return jsonify({"erro": "Nenhum dado recebido"}), 400
 
-        buffer = io.BytesIO()
-        c = canvas.Canvas(buffer, pagesize=A4)
+        # === Lê o PDF base ===
+        reader = PdfReader(PDF_BASE)
+        writer = PdfWriter()
+        page = reader.pages[0]
 
-        largura, altura = A4
+        # === Overlay ===
+        packet = io.BytesIO()
+        c = canvas.Canvas(packet, pagesize=A4)
 
-        # =============================
-        # EXEMPLO DE CAMPOS (AJUSTE AQUI)
-        # =============================
+        # ================================
+        # AQUI ENTRA O SEU MAPEAMENTO REAL
+        # ================================
 
-        c.setFont("Helvetica", 10)
+        c.setFont("Helvetica", 12)
 
-        campos = [
-            ("Beneficiário:", dados.get("beneficiario_nome", ""), 50, altura - 80),
-            ("Carteira:", dados.get("numero_carteira", ""), 50, altura - 110),
-            ("Profissional:", dados.get("nome_profissional", ""), 50, altura - 140),
-            ("Data Atendimento:", dados.get("data_atendimento", ""), 50, altura - 170),
-            ("Procedimento:", dados.get("codigo_procedimento", ""), 50, altura - 200),
-            ("Valor:", dados.get("valor_procedimento", ""), 50, altura - 230),
-        ]
+        c.drawString(69, 448, dados.get("numero_carteira", ""))
+        c.drawString(69, 470, dados.get("beneficiario_nome", ""))
+        c.drawString(320, 380, dados.get("codigo_procedimento", ""))
+        c.drawString(320, 350, dados.get("valor_procedimento", ""))
 
-        for label, valor, x, y in campos:
-            c.drawString(x, y, f"{label} {valor}")
+        # (continue com TODAS as suas coordenadas reais)
 
-        c.showPage()
         c.save()
+        packet.seek(0)
 
-        buffer.seek(0)
+        overlay = PdfReader(packet)
+        page.merge_page(overlay.pages[0])
+        writer.add_page(page)
+
+        # === Saída final ===
+        output = io.BytesIO()
+        writer.write(output)
+        output.seek(0)
 
         return send_file(
-            buffer,
+            output,
             as_attachment=True,
-            download_name="Guia_Petrobras.pdf",
+            download_name="GUIA_CONSULTA_PREENCHIDA.pdf",
             mimetype="application/pdf"
         )
 
