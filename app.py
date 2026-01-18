@@ -2,6 +2,7 @@ import os
 import io
 from datetime import datetime
 from flask import Flask, render_template, request, send_file, jsonify
+from flask_cors import CORS  # ← ADICIONAR ESTA LINHA
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter
@@ -11,6 +12,7 @@ from PyPDF2 import PdfReader, PdfWriter
 # ======================================================
 
 app = Flask(__name__)
+CORS(app)  # ← ADICIONAR ESTA LINHA - Permite requisições de qualquer origem
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PDF_ORIGINAL = os.path.join(BASE_DIR, "backend", "Guia_Petrobras_base.pdf")
@@ -105,7 +107,7 @@ def gerar_pdf():
                     x_atual += espacamento
 
             # ==================================================
-            # DATA DO ATENDIMENTO — DD MM AAAA (ROBUSTO)
+            # DATA DO ATENDIMENTO – DD MM AAAA (ROBUSTO)
             # ==================================================
             elif campo == "data_atendimento":
                 dia = mes = ano = ""
@@ -143,7 +145,7 @@ def gerar_pdf():
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-            # Tabela — 3 caracteres
+            # Tabela – 3 caracteres
             elif campo == "tabela":
                 c.setFont("Helvetica", 12)
                 espacamento = 11.5
@@ -152,7 +154,7 @@ def gerar_pdf():
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-            # Código do Procedimento — 9 caracteres
+            # Código do Procedimento – 9 caracteres
             elif campo == "codigo_procedimento":
                 c.setFont("Helvetica", 12)
                 espacamento = 11.5
@@ -161,7 +163,7 @@ def gerar_pdf():
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-            # Valor do Procedimento — 7 caracteres
+            # Valor do Procedimento – 7 caracteres
             elif campo == "valor_procedimento":
                 c.setFont("Helvetica", 12)
                 espacamento = 11.5
