@@ -69,9 +69,20 @@ def gerar_pdf():
             valor = dados.get(campo, "").strip()
             if not valor or campo == "observacao":
                 continue
+            # ==================================================
+            # PREENCHIMENTO DOS CAMPOS ESPECÍFICOS
+
+            # Número da Carteira
+            if campo == "numero_carteira":
+                c.setFont("Helvetica", 12)
+                espacamento = 11
+                x_atual = x
+                for char in valor:
+                    c.drawString(x_atual, y, char)
+                    x_atual += espacamento
 
             # Conselho (CRM)
-            if campo == "conselho":
+            elif campo == "conselho":
                 c.setFont("Helvetica", 11.5)
                 espacamento = 11.1
                 x_atual = x
