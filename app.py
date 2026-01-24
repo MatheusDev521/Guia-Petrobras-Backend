@@ -26,7 +26,7 @@ if not os.path.exists(PDF_ORIGINAL):
 
 CAMPOS = {
     "numero_carteira":           (56, 618),
-    "beneficiario_nome":         (115, 581),
+    "beneficiario_nome":         (66, 581),
     "atendimento_rn":            (470, 635),
     "nome_profissional":         (135, 490),
     "conselho":                  (278, 490),
