@@ -82,7 +82,7 @@ def gerar_pdf():
             # Número do Conselho
             elif campo == "numero_conselho":
                 c.setFont("Helvetica", 12)
-                espacamento = 10.3
+                espacamento = 10.5
                 x_atual = x
                 for char in valor:
                     c.drawString(x_atual, y, char)
