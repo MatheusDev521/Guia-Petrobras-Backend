@@ -75,7 +75,7 @@ def gerar_pdf():
             # Número da Carteira
             if campo == "numero_carteira":
                 c.setFont("Helvetica", 12)
-                espacamento = 11
+                espacamento = 12
                 x_atual = x
                 for char in valor:
                     c.drawString(x_atual, y, char)
