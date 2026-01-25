@@ -72,15 +72,6 @@ def gerar_pdf():
             # ==================================================
             # PREENCHIMENTO DOS CAMPOS ESPECÍFICOS
 
-            # Número da Carteira
-            if campo == "numero_carteira":
-                c.setFont("Helvetica", 12)
-                espacamento = 11.5
-                x_atual = x
-                for char in valor:
-                    c.drawString(x_atual, y, char)
-                    x_atual += espacamento
-
             # Número da Carteira — espaçamento personalizado por dígito
                 if campo == "numero_carteira":
                     c.setFont("Helvetica", 12)
@@ -91,12 +82,12 @@ def gerar_pdf():
                         11.5,  # 2º → 3º
                         11.5,  # 3º → 4º
                         11.5,  # 4º → 5º
-                        11.1,  # 5º → 6º
-                        11.5,  # 6º → 7º
-                        11.5,  # 7º → 8º
-                        11.5,  # ...
-                        11.5,
-                        11.5
+                        10.7,  # 5º → 6º
+                        11.1,  # 6º → 7º
+                        11.1,  # 7º → 8º
+                        11.1,  # ...
+                        11.1,
+                        11.1
                     ]
 
                     x_atual = x
