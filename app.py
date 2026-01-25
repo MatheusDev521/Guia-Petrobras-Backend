@@ -81,6 +81,36 @@ def gerar_pdf():
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
+            # Número da Carteira — espaçamento personalizado por dígito
+                if campo == "numero_carteira":
+                    c.setFont("Helvetica", 12)
+
+                    # Espaçamento específico entre cada dígito
+                    espacamentos = [
+                        11.5,  # 1º → 2º
+                        11.5,  # 2º → 3º
+                        11.5,  # 3º → 4º
+                        11.5,  # 4º → 5º
+                        11.5,  # 5º → 6º
+                        11.2,  # 6º → 7º
+                        11.5,  # 7º → 8º
+                        11.5,  # ...
+                        11.5,
+                        11.5
+                    ]
+
+                    x_atual = x
+
+                    for i, char in enumerate(valor):
+                        c.drawString(x_atual, y, char)
+
+                        # Usa o espaçamento correspondente ou um padrão
+                        if i < len(espacamentos):
+                            x_atual += espacamentos[i]
+                        else:
+                            x_atual += 11.5
+                        
+
             # Conselho (CRM)
             elif campo == "conselho":
                 c.setFont("Helvetica", 11.5)
