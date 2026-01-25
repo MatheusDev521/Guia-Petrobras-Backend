@@ -27,12 +27,12 @@ if not os.path.exists(PDF_ORIGINAL):
 CAMPOS = {
     "numero_carteira":           (56, 618),
     "beneficiario_nome":         (66, 581),
-    "atendimento_rn":            (470, 635),
+    "atendimento_rn":            (466, 630),
     "nome_profissional":         (135, 490),
-    "conselho":                  (270, 477),
-    "numero_conselho":           (350, 477),
-    "uf_conselho":               (479, 477),
-    "cbo":                       (500, 477),
+    "conselho":                  (268, 477),
+    "numero_conselho":           (335, 477),
+    "uf_conselho":               (470, 477),
+    "cbo":                       (510, 477),
     "indicacao_acidente":        (128, 430),
     "data_atendimento":          (128, 385),
     "tabela":                    (280, 386),
@@ -78,16 +78,16 @@ def gerar_pdf():
 
                     # Espaçamento específico entre cada dígito
                     espacamentos = [
-                        11.5,  # 1º → 2º
-                        11.5,  # 2º → 3º
-                        11.5,  # 3º → 4º
-                        11.5,  # 4º → 5º
-                        10.7,  # 5º → 6º
-                        11.1,  # 6º → 7º
-                        11.1,  # 7º → 8º
-                        11.1,  # ...
-                        11.1,
-                        11.1
+                        11.8,  # 1º → 2º
+                        11.8,  # 2º → 3º
+                        11.8,  # 3º → 4º
+                        11.8,  # 4º → 5º
+                        10.8,  # 5º → 6º
+                        11.8,  # 6º → 7º
+                        11.8,  # 7º → 8º
+                        11.8,  # ...
+                        11.8,
+                        11.8
                     ]
 
                     x_atual = x
