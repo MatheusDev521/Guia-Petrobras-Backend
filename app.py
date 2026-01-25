@@ -35,7 +35,7 @@ CAMPOS = {
     "cbo":                       (504.5, 476),
     "indicacao_acidente":        (119.4, 420),
     "data_atendimento":          (54.5, 370),
-    "tabela":                    (264, 370),
+    "tabela":                    (265, 370),
     "codigo_procedimento":       (329, 370),
     "valor_procedimento":        (460, 370),
     "observacao":                (110, 335),
@@ -156,24 +156,37 @@ def gerar_pdf():
                     ano = data_obj.strftime("%Y")
 
                 c.setFont("Helvetica", 12)
-                espacamento = 10
+
+                # Espaçamento entre os dígitos
+                espacamento_digito = 11.2
+
+                # Espaçamento entre blocos (DD | MM | AAAA)
+                espacamento_bloco = 14
+
                 x_atual = x
 
-                for char in dia:
+                # DIA
+                for i, char in enumerate(dia):
                     c.drawString(x_atual, y, char)
-                    x_atual += espacamento
+                    if i < len(dia) - 1:
+                        x_atual += espacamento_digito
 
-                x_atual += 10
+                x_atual += espacamento_bloco
 
-                for char in mes:
+                # MÊS
+                for i, char in enumerate(mes):
                     c.drawString(x_atual, y, char)
-                    x_atual += espacamento
+                    if i < len(mes) - 1:
+                        x_atual += espacamento_digito
 
-                x_atual += 10
+                x_atual += espacamento_bloco
 
-                for char in ano:
+                # ANO
+                for i, char in enumerate(ano):
                     c.drawString(x_atual, y, char)
-                    x_atual += espacamento
+                    if i < len(ano) - 1:
+                        x_atual += espacamento_digito
+
 
             # Tabela – 3 caracteres
             elif campo == "tabela":
@@ -189,7 +202,7 @@ def gerar_pdf():
                 c.setFont("Helvetica", 12)
 
                 # Espaçamento ENTRE os dígitos (8 espaços para 9 caracteres)
-                espacamentos = [11.5, 11.5, 10.9, 11.5, 11.5, 11, 11.5, 11.5]
+                espacamentos = [11.5, 11.5, 10.9, 11.3, 11.3, 11, 11.5, 11.5]
 
                 x_atual = x
 
