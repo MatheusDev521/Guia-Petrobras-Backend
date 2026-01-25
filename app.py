@@ -70,34 +70,34 @@ def gerar_pdf():
             if not valor or campo == "observacao":
                 continue
 
-            # Número da Carteira
-                if campo == "numero_carteira":
-                    c.setFont("Helvetica", 12)
+        # Número da Carteira
+            if campo == "numero_carteira":
+                c.setFont("Helvetica", 12)
 
-                    # Espaçamento específico entre cada dígito
-                    espacamentos = [
-                        12.3,  # 1º → 2º
-                        12.3,  # 2º → 3º
-                        12.3,  # 3º → 4º
-                        12.3,  # 4º → 5º
-                        10.8,  # 5º → 6º
-                        12.3,  # 6º → 7º
-                        12.3,  # 7º → 8º
-                        12.3,  # ...
-                        12.3,
-                        12.3
-                    ]
+                # Espaçamento específico entre cada dígito
+                espacamentos = [
+                    12.3,  # 1º → 2º
+                    12.3,  # 2º → 3º
+                    12.3,  # 3º → 4º
+                    12.3,  # 4º → 5º
+                    10.8,  # 5º → 6º
+                    12.3,  # 6º → 7º
+                    12.3,  # 7º → 8º
+                    12.3,  # ...
+                    12.3,
+                    12.3
+                ]
 
-                    x_atual = x
+                x_atual = x
 
-                    for i, char in enumerate(valor):
-                        c.drawString(x_atual, y, char)
+                for i, char in enumerate(valor):
+                    c.drawString(x_atual, y, char)
 
-                        # Usa o espaçamento correspondente ou um padrão
-                        if i < len(espacamentos):
-                            x_atual += espacamentos[i]
-                        else:
-                            x_atual += 12
+                    # Usa o espaçamento correspondente ou um padrão
+                    if i < len(espacamentos):
+                        x_atual += espacamentos[i]
+                    else:
+                        x_atual += 12
                         
 
             # Conselho (CRM)
@@ -216,14 +216,14 @@ def gerar_pdf():
 
             # Valor do Procedimento – 7 caracteres
             elif campo == "valor_procedimento":
-                c.setFont("Helvetica", 10)
+                c.setFont("Helvetica", 12)
 
                 # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
                 espacamentos = [
-                    13,  # 1º → 2º
-                    28,  # 2º → 3º
-                    13,  # 3º → 4º
-                    13,  # 4º → 5º
+                    12.5,  # 1º → 2º
+                    24,  # 2º → 3º
+                    12.5,  # 3º → 4º
+                    12.5,  # 4º → 5º
                     16,  # 5º → 6º
                     11   # 6º → 7º
                 ]
