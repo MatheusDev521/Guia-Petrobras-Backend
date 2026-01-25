@@ -2,7 +2,7 @@ import os
 import io
 from datetime import datetime
 from flask import Flask, render_template, request, send_file, jsonify
-from flask_cors import CORS
+from flask_cors import CORS  # ← ADICIONAR ESTA LINHA
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter
@@ -12,7 +12,7 @@ from PyPDF2 import PdfReader, PdfWriter
 # ======================================================
 
 app = Flask(__name__)
-CORS(app)  # Permite requisições de qualquer origem
+CORS(app)  # ← ADICIONAR ESTA LINHA - Permite requisições de qualquer origem
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PDF_ORIGINAL = os.path.join(BASE_DIR, "backend", "Guia_Petrobras_base.pdf")
@@ -71,33 +71,34 @@ def gerar_pdf():
                 continue
 
             # Número da Carteira
-            if campo == "numero_carteira":
-                c.setFont("Helvetica", 12)
+                if campo == "numero_carteira":
+                    c.setFont("Helvetica", 12)
 
-                # Espaçamento específico entre cada dígito
-                espacamentos = [
-                    12.3,  # 1º → 2º
-                    12.3,  # 2º → 3º
-                    12.3,  # 3º → 4º
-                    12.3,  # 4º → 5º
-                    10.8,  # 5º → 6º
-                    12.3,  # 6º → 7º
-                    12.3,  # 7º → 8º
-                    12.3,  # ...
-                    12.3,
-                    12.3
-                ]
+                    # Espaçamento específico entre cada dígito
+                    espacamentos = [
+                        12.3,  # 1º → 2º
+                        12.3,  # 2º → 3º
+                        12.3,  # 3º → 4º
+                        12.3,  # 4º → 5º
+                        10.8,  # 5º → 6º
+                        12.3,  # 6º → 7º
+                        12.3,  # 7º → 8º
+                        12.3,  # ...
+                        12.3,
+                        12.3
+                    ]
 
-                x_atual = x
+                    x_atual = x
 
-                for i, char in enumerate(valor):
-                    c.drawString(x_atual, y, char)
+                    for i, char in enumerate(valor):
+                        c.drawString(x_atual, y, char)
 
-                    # Usa o espaçamento correspondente ou um padrão
-                    if i < len(espacamentos):
-                        x_atual += espacamentos[i]
-                    else:
-                        x_atual += 12
+                        # Usa o espaçamento correspondente ou um padrão
+                        if i < len(espacamentos):
+                            x_atual += espacamentos[i]
+                        else:
+                            x_atual += 12
+                        
 
             # Conselho (CRM)
             elif campo == "conselho":
@@ -186,14 +187,19 @@ def gerar_pdf():
             # Código do Procedimento – 9 caracteres
             elif campo == "codigo_procedimento":
                 c.setFont("Helvetica", 12)
+
+                # Espaçamento ENTRE os dígitos (8 espaços para 9 caracteres)
                 espacamentos = [11.5, 11.5, 11.5, 10.9, 11.5, 11.5, 11.5, 11.5]
+
                 x_atual = x
+
                 for i, char in enumerate(valor):
                     c.drawString(x_atual, y, char)
+
+                    # Aplica o espaçamento correspondente
                     if i < len(espacamentos):
                         x_atual += espacamentos[i]
-                    else:
-                        x_atual += 11.5
+
 
             # Valor do Procedimento – 7 caracteres
             elif campo == "valor_procedimento":
@@ -273,7 +279,3 @@ def gerar_pdf():
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
