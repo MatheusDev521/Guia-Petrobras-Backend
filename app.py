@@ -2,7 +2,7 @@ import os
 import io
 from datetime import datetime
 from flask import Flask, render_template, request, send_file, jsonify
-from flask_cors import CORS  # ← ADICIONAR ESTA LINHA
+from flask_cors import CORS
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter
@@ -12,7 +12,7 @@ from PyPDF2 import PdfReader, PdfWriter
 # ======================================================
 
 app = Flask(__name__)
-CORS(app)  # ← ADICIONAR ESTA LINHA - Permite requisições de qualquer origem
+CORS(app)  # Permite requisições de qualquer origem
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PDF_ORIGINAL = os.path.join(BASE_DIR, "backend", "Guia_Petrobras_base.pdf")
@@ -61,8 +61,7 @@ def gerar_pdf():
         c = canvas.Canvas(packet, pagesize=A4)
 
         campos_quadriculados = [
-            "atendimento_rn",
-            "codigo_operadora", "indicacao_acidente", "tabela"
+            "atendimento_rn", "codigo_operadora", "indicacao_acidente", "tabela"
         ]
 
         for campo, (x, y) in CAMPOS.items():
@@ -70,7 +69,7 @@ def gerar_pdf():
             if not valor or campo == "observacao":
                 continue
 
-        # Número da Carteira
+            # Número da Carteira
             if campo == "numero_carteira":
                 c.setFont("Helvetica", 12)
 
@@ -101,7 +100,6 @@ def gerar_pdf():
                         x_atual += espacamentos[i]
                     else:
                         x_atual += 12
-                        
 
             # Conselho (CRM)
             elif campo == "conselho":
@@ -190,7 +188,6 @@ def gerar_pdf():
                     if i < len(ano) - 1:
                         x_atual += espacamento_digito
 
-
             # Tabela – 3 caracteres
             elif campo == "tabela":
                 c.setFont("Helvetica", 12)
@@ -216,7 +213,6 @@ def gerar_pdf():
                     if i < len(espacamentos):
                         x_atual += espacamentos[i]
 
-
             # Valor do Procedimento – 7 caracteres
             elif campo == "valor_procedimento":
                 c.setFont("Helvetica", 12)
@@ -226,10 +222,10 @@ def gerar_pdf():
                 espacamentos = [
                     12.5,  # R → $
                     12.5,  # $ → (espaço)
-                    9,  # (espaço) → 1
+                    9,     # (espaço) → 1
                     12.5,  # 1 → 1
                     12.5,  # 1 → 2
-                    9,  # 2 → (espaço)
+                    9,     # 2 → (espaço)
                     12.5   # (espaço) → 0
                 ]
 
@@ -241,7 +237,6 @@ def gerar_pdf():
                     # Aplica o espaçamento correspondente (se ainda houver)
                     if i < len(espacamentos):
                         x_atual += espacamentos[i]
-
 
             # Campos quadriculados padrão
             elif campo in campos_quadriculados:
@@ -312,3 +307,7 @@ def gerar_pdf():
 
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
