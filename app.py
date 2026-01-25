@@ -158,10 +158,10 @@ def gerar_pdf():
                 c.setFont("Helvetica", 12)
 
                 # Espaçamento entre os dígitos
-                espacamento_digito = 11.2
+                espacamento_digito = 11
 
                 # Espaçamento entre blocos (DD | MM | AAAA)
-                espacamento_bloco = 16
+                espacamento_bloco = 16.4
 
                 x_atual = x
 
@@ -216,15 +216,15 @@ def gerar_pdf():
 
                     # Valor do Procedimento – 7 caracteres
                     elif campo == "valor_procedimento":
-                        c.setFont("Helvetica", 12)
+                        c.setFont("Helvetica", 11)
 
                         # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
                         espacamentos = [
-                            10,  # 1º → 2º
-                            14,  # 2º → 3º
+                            12,  # 1º → 2º
+                            18,  # 2º → 3º
                             10,  # 3º → 4º
                             10,  # 4º → 5º
-                            12,  # 5º → 6º
+                            16,  # 5º → 6º
                             11.5   # 6º → 7º
                         ]
 
