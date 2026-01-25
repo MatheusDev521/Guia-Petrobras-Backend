@@ -221,14 +221,26 @@ def gerar_pdf():
             elif campo == "valor_procedimento":
                 c.setFont("Helvetica", 12)
 
-                # Espaçamento uniforme entre cada caractere
-                espacamento_uniforme = 12.5
-                
+                # Espaçamento ENTRE cada caractere (ajuste individual)
+                # Formato: R$ 112 00
+                espacamentos = [
+                    12.5,  # R → $
+                    12.5,     # $ → (espaço)
+                    11.5,  # (espaço) → 1
+                    12.5,  # 1 → 1
+                    12.5,  # 1 → 2
+                    12.5,  # 2 → (espaço)
+                    12.5   # (espaço) → 0
+                ]
+
                 x_atual = x
 
                 for i, char in enumerate(valor):
                     c.drawString(x_atual, y, char)
-                    x_atual += espacamento_uniforme
+                    
+                    # Aplica o espaçamento correspondente (se ainda houver)
+                    if i < len(espacamentos):
+                        x_atual += espacamentos[i]
 
 
             # Campos quadriculados padrão
