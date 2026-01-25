@@ -32,7 +32,7 @@ CAMPOS = {
     "conselho":                  (269, 476),
     "numero_conselho":           (324, 476),
     "uf_conselho":               (474, 476),
-    "cbo":                       (504, 476),
+    "cbo":                       (504.5, 476),
     "indicacao_acidente":        (120, 420),
     "data_atendimento":          (54.5, 370),
     "tabela":                    (280, 370),
@@ -156,20 +156,20 @@ def gerar_pdf():
                     ano = data_obj.strftime("%Y")
 
                 c.setFont("Helvetica", 12)
-                espacamento = 11.5
+                espacamento = 11
                 x_atual = x
 
                 for char in dia:
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-                x_atual += 12
+                x_atual += 10
 
                 for char in mes:
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-                x_atual += 12
+                x_atual += 10
 
                 for char in ano:
                     c.drawString(x_atual, y, char)
