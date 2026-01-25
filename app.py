@@ -226,10 +226,10 @@ def gerar_pdf():
                 espacamentos = [
                     12.5,  # R → $
                     12.5,  # $ → (espaço)
-                    10.7,  # (espaço) → 1
+                    9,  # (espaço) → 1
                     12.5,  # 1 → 1
                     12.5,  # 1 → 2
-                    12,  # 2 → (espaço)
+                    9,  # 2 → (espaço)
                     12.5   # (espaço) → 0
                 ]
 
