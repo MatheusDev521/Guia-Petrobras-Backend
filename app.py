@@ -29,8 +29,8 @@ CAMPOS = {
     "beneficiario_nome":         (66, 581),
     "atendimento_rn":            (466, 630),
     "nome_profissional":         (135, 490),
-    "conselho":                  (268, 477),
-    "numero_conselho":           (335, 477),
+    "conselho":                  (269, 477),
+    "numero_conselho":           (322, 477),
     "uf_conselho":               (470, 477),
     "cbo":                       (510, 477),
     "indicacao_acidente":        (128, 430),
@@ -78,16 +78,16 @@ def gerar_pdf():
 
                     # Espaçamento específico entre cada dígito
                     espacamentos = [
-                        11.8,  # 1º → 2º
-                        11.8,  # 2º → 3º
-                        11.8,  # 3º → 4º
-                        11.8,  # 4º → 5º
+                        12,  # 1º → 2º
+                        12,  # 2º → 3º
+                        12,  # 3º → 4º
+                        12,  # 4º → 5º
                         10.8,  # 5º → 6º
-                        11.8,  # 6º → 7º
-                        11.8,  # 7º → 8º
-                        11.8,  # ...
-                        11.8,
-                        11.8
+                        12,  # 6º → 7º
+                        12,  # 7º → 8º
+                        12,  # ...
+                        12,
+                        12
                     ]
 
                     x_atual = x
