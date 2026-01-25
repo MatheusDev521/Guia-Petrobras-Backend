@@ -35,9 +35,9 @@ CAMPOS = {
     "cbo":                       (504.5, 476),
     "indicacao_acidente":        (119.4, 420),
     "data_atendimento":          (54.5, 370),
-    "tabela":                    (280, 370),
-    "codigo_procedimento":       (330, 370),
-    "valor_procedimento":        (510, 385),
+    "tabela":                    (269, 370),
+    "codigo_procedimento":       (329, 370),
+    "valor_procedimento":        (485, 370),
     "observacao":                (110, 335),
 }
 
@@ -156,20 +156,20 @@ def gerar_pdf():
                     ano = data_obj.strftime("%Y")
 
                 c.setFont("Helvetica", 12)
-                espacamento = 9
+                espacamento = 9.5
                 x_atual = x
 
                 for char in dia:
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-                x_atual += 9
+                x_atual += 9.5
 
                 for char in mes:
                     c.drawString(x_atual, y, char)
                     x_atual += espacamento
 
-                x_atual += 9
+                x_atual += 9.5
 
                 for char in ano:
                     c.drawString(x_atual, y, char)
