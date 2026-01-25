@@ -35,7 +35,7 @@ CAMPOS = {
     "cbo":                       (504.5, 476),
     "indicacao_acidente":        (119.4, 420),
     "data_atendimento":          (54.5, 370),
-    "tabela":                    (263.5, 370),
+    "tabela":                    (264, 370),
     "codigo_procedimento":       (329, 370),
     "valor_procedimento":        (460, 370),
     "observacao":                (110, 335),
@@ -189,7 +189,7 @@ def gerar_pdf():
                 c.setFont("Helvetica", 12)
 
                 # Espaçamento ENTRE os dígitos (8 espaços para 9 caracteres)
-                espacamentos = [11.5, 11.5, 10.9, 11.5, 11.5, 11.5, 11.5, 11.5]
+                espacamentos = [11.5, 11.5, 10.9, 11.5, 11.5, 11, 11.5, 11.5]
 
                 x_atual = x
 
