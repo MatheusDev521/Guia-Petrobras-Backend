@@ -216,16 +216,16 @@ def gerar_pdf():
 
                     # Valor do Procedimento – 7 caracteres
                     elif campo == "valor_procedimento":
-                        c.setFont("Helvetica", 11)
+                        c.setFont("Helvetica", 10)
 
                         # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
                         espacamentos = [
-                            12,  # 1º → 2º
-                            18,  # 2º → 3º
-                            10,  # 3º → 4º
-                            10,  # 4º → 5º
+                            13,  # 1º → 2º
+                            28,  # 2º → 3º
+                            13,  # 3º → 4º
+                            13,  # 4º → 5º
                             16,  # 5º → 6º
-                            11.5   # 6º → 7º
+                            11   # 6º → 7º
                         ]
 
                         x_atual = x
