@@ -61,7 +61,7 @@ def gerar_pdf():
         c = canvas.Canvas(packet, pagesize=A4)
 
         campos_quadriculados = [
-            "numero_carteira", "atendimento_rn",
+            "atendimento_rn",
             "codigo_operadora", "indicacao_acidente", "tabela"
         ]
 
@@ -214,28 +214,28 @@ def gerar_pdf():
                         x_atual += espacamentos[i]
 
 
-                    # Valor do Procedimento – 7 caracteres
-                    elif campo == "valor_procedimento":
-                        c.setFont("Helvetica", 10)
+            # Valor do Procedimento – 7 caracteres
+            elif campo == "valor_procedimento":
+                c.setFont("Helvetica", 10)
 
-                        # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
-                        espacamentos = [
-                            13,  # 1º → 2º
-                            28,  # 2º → 3º
-                            13,  # 3º → 4º
-                            13,  # 4º → 5º
-                            16,  # 5º → 6º
-                            11   # 6º → 7º
-                        ]
+                # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
+                espacamentos = [
+                    13,  # 1º → 2º
+                    28,  # 2º → 3º
+                    13,  # 3º → 4º
+                    13,  # 4º → 5º
+                    16,  # 5º → 6º
+                    11   # 6º → 7º
+                ]
 
-                        x_atual = x
+                x_atual = x
 
-                        for i, char in enumerate(valor):
-                            c.drawString(x_atual, y, char)
+                for i, char in enumerate(valor):
+                    c.drawString(x_atual, y, char)
 
-                            # Aplica o espaçamento correspondente
-                            if i < len(espacamentos):
-                                x_atual += espacamentos[i]
+                    # Aplica o espaçamento correspondente
+                    if i < len(espacamentos):
+                        x_atual += espacamentos[i]
 
 
             # Campos quadriculados padrão
