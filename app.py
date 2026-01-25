@@ -29,10 +29,10 @@ CAMPOS = {
     "beneficiario_nome":         (66, 581),
     "atendimento_rn":            (466, 630),
     "nome_profissional":         (135, 490),
-    "conselho":                  (269, 477),
-    "numero_conselho":           (322, 477),
-    "uf_conselho":               (470, 477),
-    "cbo":                       (510, 477),
+    "conselho":                  (269, 476),
+    "numero_conselho":           (326, 476),
+    "uf_conselho":               (475, 476),
+    "cbo":                       (499, 476),
     "indicacao_acidente":        (128, 430),
     "data_atendimento":          (128, 385),
     "tabela":                    (280, 386),
@@ -69,10 +69,8 @@ def gerar_pdf():
             valor = dados.get(campo, "").strip()
             if not valor or campo == "observacao":
                 continue
-            # ==================================================
-            # PREENCHIMENTO DOS CAMPOS ESPECÍFICOS
 
-            # Número da Carteira — espaçamento personalizado por dígito
+            # Número da Carteira
                 if campo == "numero_carteira":
                     c.setFont("Helvetica", 12)
 
@@ -99,7 +97,7 @@ def gerar_pdf():
                         if i < len(espacamentos):
                             x_atual += espacamentos[i]
                         else:
-                            x_atual += 11.5
+                            x_atual += 12
                         
 
             # Conselho (CRM)
