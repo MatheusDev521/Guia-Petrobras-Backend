@@ -27,7 +27,7 @@ if not os.path.exists(PDF_ORIGINAL):
 CAMPOS = {
     "numero_carteira":           (56, 618),
     "beneficiario_nome":         (65, 581),
-    "atendimento_rn":            (463.5, 620),
+    "atendimento_rn":            (463.5, 618),
     "nome_profissional":         (65, 480),
     "conselho":                  (269, 476),
     "numero_conselho":           (324, 476),
@@ -112,7 +112,7 @@ def gerar_pdf():
             # Número do Conselho
             elif campo == "numero_conselho":
                 c.setFont("Helvetica", 12)
-                espacamento = 10.5
+                espacamento = 10.4
                 x_atual = x
                 for char in valor:
                     c.drawString(x_atual, y, char)
