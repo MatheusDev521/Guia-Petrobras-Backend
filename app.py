@@ -224,11 +224,11 @@ def gerar_pdf():
                 # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
                 espacamentos = [
                     12.5,  # 1º → 2º
-                    16,  # 2º → 3º
+                    5,  # 2º → 3º
                     12.5,  # 3º → 4º
                     12.5,  # 4º → 5º
-                    14,  # 5º → 6º
-                    11   # 6º → 7º
+                    12.5,  # 5º → 6º
+                    12.5   # 6º → 7º
                 ]
 
                 x_atual = x
