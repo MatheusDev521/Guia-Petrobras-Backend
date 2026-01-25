@@ -29,10 +29,10 @@ CAMPOS = {
     "beneficiario_nome":         (66, 581),
     "atendimento_rn":            (470, 635),
     "nome_profissional":         (135, 490),
-    "conselho":                  (278, 490),
-    "numero_conselho":           (400, 480),
-    "uf_conselho":               (479, 490),
-    "cbo":                       (520, 490),
+    "conselho":                  (270, 477),
+    "numero_conselho":           (350, 477),
+    "uf_conselho":               (479, 477),
+    "cbo":                       (500, 477),
     "indicacao_acidente":        (128, 430),
     "data_atendimento":          (128, 385),
     "tabela":                    (280, 386),
@@ -75,7 +75,7 @@ def gerar_pdf():
             # Número da Carteira
             if campo == "numero_carteira":
                 c.setFont("Helvetica", 12)
-                espacamento = 12
+                espacamento = 11.5
                 x_atual = x
                 for char in valor:
                     c.drawString(x_atual, y, char)
