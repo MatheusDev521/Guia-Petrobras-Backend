@@ -77,15 +77,15 @@ def gerar_pdf():
                 # Espaçamento específico entre cada dígito
                 espacamentos = [
                     12.3,  # 1º → 2º
-                    12.3,  # 2º → 3º
+                    12,  # 2º → 3º
                     12.3,  # 3º → 4º
-                    12.3,  # 4º → 5º
+                    12,  # 4º → 5º
                     10.8,  # 5º → 6º
                     12.3,  # 6º → 7º
-                    12.3,  # 7º → 8º
-                    12.3,  # ...
-                    12.3,
-                    12.3
+                    12,  # 7º → 8º
+                    12,  # ...
+                    12,
+                    12
                 ]
 
                 x_atual = x
@@ -161,7 +161,7 @@ def gerar_pdf():
                 espacamento_digito = 11
 
                 # Espaçamento entre blocos (DD | MM | AAAA)
-                espacamento_bloco = 16.6
+                espacamento_bloco = 16.8
 
                 x_atual = x
 
