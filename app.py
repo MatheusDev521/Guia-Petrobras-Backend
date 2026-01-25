@@ -34,7 +34,7 @@ CAMPOS = {
     "uf_conselho":               (474, 476),
     "cbo":                       (504, 476),
     "indicacao_acidente":        (120, 420),
-    "data_atendimento":          (55, 370),
+    "data_atendimento":          (54.5, 370),
     "tabela":                    (280, 370),
     "codigo_procedimento":       (340, 370),
     "valor_procedimento":        (510, 385),
@@ -112,7 +112,7 @@ def gerar_pdf():
             # Número do Conselho
             elif campo == "numero_conselho":
                 c.setFont("Helvetica", 12)
-                espacamento = 10.4
+                espacamento = 10.3
                 x_atual = x
                 for char in valor:
                     c.drawString(x_atual, y, char)
