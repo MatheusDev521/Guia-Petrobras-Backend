@@ -38,7 +38,7 @@ CAMPOS = {
     "tabela":                    (265, 370),
     "codigo_procedimento":       (329, 370),
     "valor_procedimento":        (460, 370),
-    "observacao":                (110, 335),
+    "observacao":                (65, 327),
 }
 
 # ======================================================
