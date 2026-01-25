@@ -161,7 +161,7 @@ def gerar_pdf():
                 espacamento_digito = 11.2
 
                 # Espaçamento entre blocos (DD | MM | AAAA)
-                espacamento_bloco = 14
+                espacamento_bloco = 16
 
                 x_atual = x
 
@@ -202,7 +202,7 @@ def gerar_pdf():
                 c.setFont("Helvetica", 12)
 
                 # Espaçamento ENTRE os dígitos (8 espaços para 9 caracteres)
-                espacamentos = [11.5, 11.5, 10.9, 11.3, 11.3, 11, 11.5, 11.5]
+                espacamentos = [11.5, 11.5, 10.9, 11.3, 11.1, 10.9, 11.5, 11.5]
 
                 x_atual = x
 
@@ -214,14 +214,29 @@ def gerar_pdf():
                         x_atual += espacamentos[i]
 
 
-            # Valor do Procedimento – 7 caracteres
-            elif campo == "valor_procedimento":
-                c.setFont("Helvetica", 12)
-                espacamento = 11.5
-                x_atual = x
-                for char in valor:
-                    c.drawString(x_atual, y, char)
-                    x_atual += espacamento
+                    # Valor do Procedimento – 7 caracteres
+                    elif campo == "valor_procedimento":
+                        c.setFont("Helvetica", 12)
+
+                        # Espaçamento ENTRE cada caractere (6 espaços para 7 caracteres)
+                        espacamentos = [
+                            10,  # 1º → 2º
+                            14,  # 2º → 3º
+                            10,  # 3º → 4º
+                            10,  # 4º → 5º
+                            12,  # 5º → 6º
+                            11.5   # 6º → 7º
+                        ]
+
+                        x_atual = x
+
+                        for i, char in enumerate(valor):
+                            c.drawString(x_atual, y, char)
+
+                            # Aplica o espaçamento correspondente
+                            if i < len(espacamentos):
+                                x_atual += espacamentos[i]
+
 
             # Campos quadriculados padrão
             elif campo in campos_quadriculados:
